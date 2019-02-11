@@ -1,0 +1,58 @@
+
+  <div class="form-group">
+    <input type="search"
+           class="form-control"
+           placeholder="Enter search string"
+           #search>
+  </div>
+  <button type="button"
+          class="btn btn-secondary"
+          (click)="onSearch(search.value)">
+    Search
+  </button>
+  <div class="row">
+    
+    <div class="col-md-2"> Filter by</div>
+    <div class="col-md-4"> 
+      <input type="text" [(ngModel)]="listFilter">
+    </div>
+    <div class="col-md-4">Filtered on : {{listFilter}}</div>
+  </div>
+
+
+<hr/>
+
+<div class="text-center">
+  <p class="lead"
+     *ngIf="loading">Loading...</p>
+</div>
+<div>
+  <div class="col-mid-4">
+    <button class="btn-primary" (click)="toggleImage()"> {{showImage ? "Hide":"Show"}} Image</button>
+  </div>
+</div>
+
+<div class="row " >
+
+  <div class="col-4 card-deck" *ngFor="let recipe of filteredList" >
+    <div class="card border-secondary mb-3" style="max-width: 48rem;">
+      <img *ngIf ="showImage" [src]='recipe.image' class="card-img-top" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{recipe.label}}</h5>
+        <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Calories: {{recipe.calories|number}}</li>
+        <li class="list-group-item">Total Weight: {{recipe.totalWeight|number}}</li>
+        <li class="list-group-item">Total Time : {{recipe.totalTime | number}}  minutes</li>
+        <li class="list-group-item"># : {{recipe.healthLabels }} </li>
+      </ul>
+
+      <div class="card-footer align-content-center">
+        <a [routerLink]="['/recipeDetail', recipe.uri]" class="btn btn-primary ">Details</a>
+        <!-- <a [routerLink]="['/recipeDetails', recipe.uri]" class="btn btn-primary ">Details</a>-->
+        <!--<small class="text-muted">Last updated 3 mins ago</small>-->
+      </div>
+    </div>
+  </div>
+</div>
