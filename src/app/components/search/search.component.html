@@ -32,19 +32,19 @@
   </div>
 </div>
 
-<div class="row " >
+<div class="row "  >
 
-  <div class="col-4 card-deck" *ngFor="let recipe of filteredList" >
+  <div class="col-4 card-deck"  appImageOverlay [config]="{querySelector: '#detailList'}" *ngFor="let recipe of filteredList" >
     <div class="card border-secondary mb-3" style="max-width: 48rem;">
       <img *ngIf ="showImage" [src]='recipe.image' class="card-img-top" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{recipe.label}}</h5>
         <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
       </div>
-      <ul class="list-group list-group-flush">
+      <ul id= "detailList" class="list-group list-group-flush">
         <li class="list-group-item">Calories: {{recipe.calories|number}}</li>
         <li class="list-group-item">Total Weight: {{recipe.totalWeight|number}}</li>
-        <li class="list-group-item">Total Time : {{recipe.totalTime | number}}  minutes</li>
+        <li class="list-group-item">Total Time : {{recipe.totalTime | convert }}  minutes</li>
         <li class="list-group-item"># : {{recipe.healthLabels }} </li>
       </ul>
 

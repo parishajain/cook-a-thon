@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from "../services/data.service";
 import { RecipeDetails } from '../models/recipe-details';
+//import { ConvertToHoursPipe } from 'src/app/Pipes/convert-to-hours.pipe';
+
 //import {Recipes} from "../models/recipes";
 //import {RecipeDetails} from "../models/recipe-details";
 
